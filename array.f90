@@ -12,13 +12,13 @@ program array
    allocate(A(rows, cols), stat = istat)
    if (istat /= 0) stop 'Error during allocation of A and q'
  
-!  Matrix A is:
-!  A = [[ 1  4  7 ]
-!       [ 2  5  8 ]
-!       [ 3  6  9 ]
-!       ]
    A = reshape([(i, i = 1, size(A))], shape(A))
 
+
+! A = [  1   4   7  10 ;
+!        2   5   8  11 ;
+!        3   6   9  12 ;
+!      ]
    write(*, fmt) "Matrix A is:", "A", ((A(i, j), j = 1, size(A, 2)), i = 1, size(A, 1))
  
 !  p will be associated with the first column of A
@@ -30,6 +30,11 @@ program array
 !  This will end the association between p and the first column of A
    nullify(p)
 
+
+! A = [100   4   7  10 ;
+!      200   5   8  11 ;
+!      300   6   9  12 ;
+!      ]
    write(*, fmt) "Matrix A becomes:", "A", ((A(i, j), j = 1, size(A, 2)), i = 1, size(A, 1))
  
    allocate (p(1:rows*cols), stat = istat)
