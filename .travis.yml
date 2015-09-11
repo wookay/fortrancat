@@ -1,0 +1,10 @@
+language: c
+notifications:
+  email: false
+sudo: required
+before_install:
+  - sudo apt-get install gfortran
+script:
+  - make
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
